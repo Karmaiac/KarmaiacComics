@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KarmaiacComics</title>
   
-  <!-- Importing a bold, clean web font (Montserrat) -->
+  <!-- Modern Google Font (Montserrat) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
@@ -14,7 +14,6 @@
     body {
       background-color: #121212;
       color: #e0e0e0;
-      /* Applied new font here */
       font-family: 'Montserrat', sans-serif;
       margin: 0;
       padding: 0;
@@ -25,12 +24,16 @@
 
     header {
       width: 100%;
-      padding: 40px 20px;
+      padding: 40px 20px 30px 20px;
       text-align: center;
       background-color: #1a1a1a;
       
-      /* Example: Stylized accent border/divider instead of plain line */
-      border-bottom: 4px dashed #ff4757; 
+      /* Sets the height of your drawn pattern border */
+      border-bottom: 20px solid transparent; 
+      
+      /* Tiles your pattern.png across the divider line */
+      border-image: url('pattern.png') 30 repeat;
+      
       box-shadow: 0px 4px 15px rgba(0,0,0,0.5);
     }
 
@@ -67,7 +70,7 @@
     }
 
     select:hover {
-      border-color: #ff4757;
+      border-color: #888888;
     }
 
     select:focus {
@@ -84,7 +87,6 @@
 
   <div class="nav-container">
     <select id="episode-select" onchange="if (this.value) window.location.href = this.value;">
-      <!-- Removed the "--" here -->
       <option value="">Select an Episode</option>
       <option value="pages/ep-1.html">Episode 1</option>
     </select>
