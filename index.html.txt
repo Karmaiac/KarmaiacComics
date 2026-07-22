@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Webcomic Title</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      width: 100%;
+      padding: 40px 20px;
+      text-align: center;
+      background-color: #1a1a1a;
+      border-bottom: 2px solid #333;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+      color: #ffffff;
+    }
+
+    .nav-container {
+      margin: 30px 0;
+    }
+
+    select {
+      background-color: #2a2a2a;
+      color: #ffffff;
+      padding: 12px 20px;
+      font-size: 1rem;
+      border: 1px solid #444;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    select:focus {
+      outline: none;
+      border-color: #666;
+    }
+
+    .comic-display {
+      max-width: 800px;
+      width: 100%;
+      margin: 20px 0;
+    }
+
+    .comic-display img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>MY WEBCOMIC TITLE</h1>
+    <p>Read the latest episodes below!</p>
+  </header>
+
+  <div class="nav-container">
+    <label for="episode-select">Episode List: </label>
+    <select id="episode-select" onchange="if (this.value) window.location.href = this.value;">
+      <option value="">-- Select an Episode --</option>
+      <option value="pages/ep-1.html">Episode 1: The Beginning</option>
+    </select>
+  </div>
+
+</body>
+</html>
