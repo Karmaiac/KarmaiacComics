@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KarmaiacComics - Episode 1</title>
+  
+  <!-- Modern Google Font (Montserrat) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 20px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Navigation Control Bar */
+    .reader-nav {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      margin: 20px 0;
+      width: 90%;
+      max-width: 800px;
+    }
+
+    .nav-btn {
+      background-color: #2a2a2a;
+      color: #ffffff;
+      border: 2px solid #444;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      background-color: #444;
+      border-color: #888;
+    }
+
+    select {
+      background-color: #2a2a2a;
+      color: #ffffff;
+      padding: 10px 16px;
+      font-size: 0.95rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      border: 2px solid #444;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    /* Vertical Webcomic Scroll Container */
+    .comic-container {
+      max-width: 800px; /* Constrains webtoon width so it looks crisp on desktop */
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .comic-page {
+      width: 100%;
+      height: auto;
+      display: block; /* Eliminates white gap lines between stacked vertical panels */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Controls -->
+  <div class="reader-nav">
+    <a href="../index.html" class="nav-btn">Home</a>
+    <button class="nav-btn" disabled style="opacity: 0.4;">❮ Prev</button>
+    
+    <select onchange="if (this.value) window.location.href = this.value;">
+      <option value="">Episode 1</option>
+      <!-- You can add <option value="ep-2.html">Episode 2</option> later! -->
+    </select>
+
+    <button class="nav-btn" disabled style="opacity: 0.4;">Next ❯</button>
+  </div>
+
+  <!-- Vertical Webtoon Panels Stack -->
+  <div class="comic-container">
+    <!-- Place your sliced comic files inside the pages folder and list them here: -->
+    <img src="ep1_slice1.png" alt="Episode 1 Part 1" class="comic-page">
+    <!-- <img src="ep1_slice2.png" alt="Episode 1 Part 2" class="comic-page"> -->
+  </div>
+
+  <!-- Bottom Navigation Controls -->
+  <div class="reader-nav">
+    <a href="../index.html" class="nav-btn">Home</a>
+    <button class="nav-btn" disabled style="opacity: 0.4;">❮ Prev</button>
+    
+    <select onchange="if (this.value) window.location.href = this.value;">
+      <option value="">Episode 1</option>
+    </select>
+
+    <button class="nav-btn" disabled style="opacity: 0.4;">Next ❯</button>
+  </div>
+
+</body>
+</html>
