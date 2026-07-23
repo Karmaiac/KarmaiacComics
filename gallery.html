@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KarmaiacComics - Gallery</title>
+  
+  <!-- Modern Google Font (Montserrat) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Top & Bottom Navigation Bar */
+    .nav-bar {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .nav-btn {
+      background-color: #2a2a2a;
+      color: #ffffff;
+      border: 2px solid #444;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      background-color: #444;
+      border-color: #888;
+    }
+
+    /* Main Art Viewer Box */
+    .art-display {
+      max-width: 800px;
+      width: 100%;
+      text-align: center;
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 12px;
+      border: 2px solid #333;
+      box-shadow: 0px 4px 15px rgba(0,0,0,0.5);
+      box-sizing: border-box;
+    }
+
+    .art-display img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .art-caption {
+      margin-top: 15px;
+      color: #aaaaaa;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <div class="nav-bar">
+    <button class="nav-btn" onclick="prevImage()">❮ Back</button>
+    <a href="index.html" class="nav-btn">Home</a>
+    <button class="nav-btn" onclick="nextImage()">Next ❯</button>
+  </div>
+
+  <!-- Artwork Display Area -->
+  <div class="art-display">
+    <img id="current-art" src="art1.png" alt="Illustration">
+    <p id="art-caption" class="art-caption">Illustration 1</p>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <div class="nav-bar">
+    <button class="nav-btn" onclick="prevImage()">❮ Back</button>
+    <a href="index.html" class="nav-btn">Home</a>
+    <button class="nav-btn" onclick="nextImage()">Next ❯</button>
+  </div>
+
+  <script>
+    // Add your image filenames and captions here!
+    const gallery = [
+      { src: "art1.png", caption: "Piece 1" },
+      { src: "art2.png", caption: "Piece 2" },
+      { src: "art3.png", caption: "Piece 3" }
+    ];
+
+    let currentIndex = 0;
+
+    function updateGallery() {
+      document.getElementById("current-art").src = gallery[currentIndex].src;
+      document.getElementById("art-caption").textContent = 
+        `${gallery[currentIndex].caption} (${currentIndex + 1} of ${gallery.length})`;
+    }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % gallery.length;
+      updateGallery();
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + gallery.length) % gallery.length;
+      updateGallery();
+    }
+  </script>
+
+</body>
+</html>
