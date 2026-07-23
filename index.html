@@ -104,18 +104,48 @@
       color: #cccccc;
     }
 
+    /* Group styling for the two buttons */
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
+
     .youtube-link {
       color: #ffffff;
       background-color: #cc0000;
-      padding: 10px 20px;
+      padding: 12px 20px;
       border-radius: 6px;
       font-weight: 700;
       text-decoration: none;
       transition: background-color 0.2s;
+      width: 80%;
+      max-width: 320px;
+      box-sizing: border-box;
     }
 
     .youtube-link:hover {
       background-color: #e60000;
+    }
+
+    .art-link {
+      color: #ffffff;
+      background-color: #2b2b2b;
+      border: 2px solid #444;
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+      width: 80%;
+      max-width: 320px;
+      box-sizing: border-box;
+    }
+
+    .art-link:hover {
+      background-color: #3d3d3d;
+      border-color: #666;
     }
 
   </style>
@@ -144,8 +174,11 @@
     
     <p>I've been making art for 16 years, and if there's one thing I learned, it's that art is communicative, and with that, here are some comics and stories that I've been working on as dream projects.</p>
     
-    <!-- Youtube Channel Link -->
-    <a href="https://www.youtube.com/channel/UCIx2IiZy9_K4dOU7RWhWcUA" target="_blank" class="youtube-link">Nah i want to watch your YouTube instead</a>
+    <!-- Link Buttons -->
+    <div class="button-group">
+      <a href="https://www.youtube.com/channel/UCIx2IiZy9_K4dOU7RWhWcUA" target="_blank" class="youtube-link">Nah i want to watch your YouTube instead</a>
+      <a href="gallery.html" class="art-link">Nah i want to see your artwork instead</a>
+    </div>
   </div>
 
 </body>
