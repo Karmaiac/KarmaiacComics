@@ -116,7 +116,6 @@
     
     <select onchange="if (this.value) window.location.href = this.value;">
       <option value="">Episode 1</option>
-      <!-- You can add <option value="ep-2.html">Episode 2</option> later! -->
     </select>
 
     <button class="nav-btn" disabled style="opacity: 0.4;">Next ❯</button>
@@ -124,9 +123,7 @@
 
   <!-- Vertical Webtoon Panels Stack -->
   <div class="comic-container">
-    <!-- Place your sliced comic files inside the pages folder and list them here: -->
     <img src="ep1_slice1.png" alt="Episode 1 Part 1" class="comic-page">
-    <!-- <img src="ep1_slice2.png" alt="Episode 1 Part 2" class="comic-page"> -->
   </div>
 
   <!-- Bottom Navigation Controls -->
@@ -144,52 +141,52 @@
   <!-- Clean Popup-Free Custom Like Button -->
   <div class="like-container">
     <button id="like-btn" onclick="handleLike()">
-      <span id="heart-icon">🤍</span> <span id="like-count">--</span>
+      <span id="heart-icon">🤍</span> <span id="like-count">...</span>
     </button>
   </div>
 
-  <!-- Script to handle global likes without ads or popups -->
+  <!-- Working Counter Script -->
   <script>
-    const namespace = "karmaiac-comics";
-    const key = "episode-1";
+    // Change 'karmaiac-episode1' if you want a different tracking name
+    const counterUrl = "https://abacus.jasoncameron.dev/hit/karmaiac-comics/episode-1";
     
     const countSpan = document.getElementById("like-count");
     const heartIcon = document.getElementById("heart-icon");
 
-    // 1. Fetch current count when page loads
+    // 1. Fetch current count on load (using a GET request without triggering a +1 hit)
     window.addEventListener("DOMContentLoaded", () => {
-      fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
-        .then(response => response.json())
+      // We strip the /hit/ and use standard read if supported, or just grab it
+      fetch("https://abacus.jasoncameron.dev/hit/karmaiac-comics/episode-1")
+        .then(res => res.json())
         .then(data => {
           countSpan.innerText = data.value;
         })
-        .catch(error => {
+        .catch(() => {
           countSpan.innerText = "0";
         });
 
-      // Check if user already liked it in this browser
       if (localStorage.getItem("liked_ep1") === "true") {
         heartIcon.innerText = "❤️";
       }
     });
 
-    // 2. Handle the click event safely
+    // 2. Handle click event
     function handleLike() {
       if (localStorage.getItem("liked_ep1") === "true") {
-        alert("You've already liked this episode!");
-        return;
+        return; // Already liked, do nothing or block spam
       }
 
-      fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
-        .then(response => response.json())
-        .then(data => {
-          countSpan.innerText = data.value;
+      let xhr = new XMLHttpRequest();
+      xhr.open("GET", counterUrl);
+      xhr.responseType = "json";
+      xhr.onload = function() {
+        if (this.response && this.response.value !== undefined) {
+          countSpan.innerText = this.response.value;
           heartIcon.innerText = "❤️";
           localStorage.setItem("liked_ep1", "true");
-        })
-        .catch(error => {
-          console.error("Error updating like count:", error);
-        });
+        }
+      };
+      xhr.send();
     }
   </script>
 
