@@ -78,9 +78,32 @@
       display: block; /* Eliminates white gap lines between stacked vertical panels */
     }
 
-    /* Like Button Container Styling */
+    /* Clean Custom Like Button Styling */
     .like-container {
       margin: 10px 0 30px 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    #like-btn {
+      background-color: #2a2a2a;
+      color: #ffffff;
+      border: 2px solid #444;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    #like-btn:hover {
+      border-color: #00ff87;
+      background-color: #333;
     }
   </style>
 </head>
@@ -118,13 +141,57 @@
     <button class="nav-btn" disabled style="opacity: 0.4;">Next ❯</button>
   </div>
 
-  <!-- Like Button Placed Right Under Bottom Navigation -->
+  <!-- Clean Popup-Free Custom Like Button -->
   <div class="like-container">
-    <!-- LikeBtn.com BEGIN -->
-    <span class="likebtn-wrapper" data-theme="custom" data-icon_l="hrt1" data-icon_d="sml3-u" data-icon_l_c="#00080e" data-icon_l_c_v="rgba(33,217,172,0.9)" data-icon_d_c="#000000" data-icon_d_c_v="rgba(181,161,118,0.97)" data-label_c="#16489e" data-bg_c="rgba(250,250,250,0)" data-bg_c_v="rgba(250,250,250,0)" data-brdr_c="#00ff87" data-f_family="Times New Roman" data-ef_voting="shake" data-identifier="item_1"></span>
-    <script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
-    <!-- LikeBtn.com END -->
+    <button id="like-btn" onclick="handleLike()">
+      <span id="heart-icon">🤍</span> <span id="like-count">--</span>
+    </button>
   </div>
+
+  <!-- Script to handle global likes without ads or popups -->
+  <script>
+    const namespace = "karmaiac-comics";
+    const key = "episode-1";
+    
+    const countSpan = document.getElementById("like-count");
+    const heartIcon = document.getElementById("heart-icon");
+
+    // 1. Fetch current count when page loads
+    window.addEventListener("DOMContentLoaded", () => {
+      fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
+        .then(response => response.json())
+        .then(data => {
+          countSpan.innerText = data.value;
+        })
+        .catch(error => {
+          countSpan.innerText = "0";
+        });
+
+      // Check if user already liked it in this browser
+      if (localStorage.getItem("liked_ep1") === "true") {
+        heartIcon.innerText = "❤️";
+      }
+    });
+
+    // 2. Handle the click event safely
+    function handleLike() {
+      if (localStorage.getItem("liked_ep1") === "true") {
+        alert("You've already liked this episode!");
+        return;
+      }
+
+      fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+        .then(response => response.json())
+        .then(data => {
+          countSpan.innerText = data.value;
+          heartIcon.innerText = "❤️";
+          localStorage.setItem("liked_ep1", "true");
+        })
+        .catch(error => {
+          console.error("Error updating like count:", error);
+        });
+    }
+  </script>
 
 </body>
 </html>
