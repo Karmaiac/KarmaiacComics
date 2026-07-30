@@ -1,14 +1,15 @@
-https://karmaiac.github.io/KarmaiacComics/
-    1.0
-  
-
-  
-  
-    https://karmaiac.github.io/KarmaiacComics/gallery.html
-    0.8
-  
-
-  
-  
-    https://karmaiac.github.io/KarmaiacComics/pages/ep-1.html
-    0.8
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://karmaiac.github.io/KarmaiacComics/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://karmaiac.github.io/KarmaiacComics/gallery.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://karmaiac.github.io/KarmaiacComics/pages/ep-1.html</loc>
+    <priority>0.8</priority>
+  </url>
+</urlset>
